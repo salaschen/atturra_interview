@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
-namespace PayCalculator; 
-internal class PaySummary {
+namespace PayCalculator;
+
+public class PaySummary {
     public double gross = 0;
     public double super = 0;
     public double taxableIncome = 0; // Taxable income unrounded.
@@ -32,7 +29,7 @@ internal class PaySummary {
 
         // super should be rounded up to the nearest cent,
         // and is based on an unrounded taxable income.
-        super = RoundUpToCent(gross - taxableIncome);
+        super = RoundToNearestCent(gross - taxableIncome);
 
         // Taxable income rounded down to the nearest dollar when calculating deductions.
         taxableForDeductions = Math.Floor(taxableIncome);
@@ -44,14 +41,17 @@ internal class PaySummary {
             case 'M':
                 frequency = PayFrequency.Monthly;
                 return true;
+
             case 'w':
             case 'W':
                 frequency = PayFrequency.Weekly;
                 return true;
+
             case 'f':
             case 'F':
                 frequency = PayFrequency.Fortnightly;
                 return true;
+
             default:
                 return false;
         }
@@ -94,12 +94,15 @@ internal class PaySummary {
             case PayFrequency.Weekly:
                 pay = RoundUpToCent(net / 365 * 7);
                 return $"{label}: {pay:c} per week";
+
             case PayFrequency.Fortnightly:
                 pay = RoundUpToCent(net / 365 * 14);
                 return $"{label}: {pay:c} per fortnight";
+
             case PayFrequency.Monthly:
                 pay = RoundUpToCent(net / 12);
                 return $"{label}: {pay:c} per month";
+
             default:
                 return "Error when generating pay packet message.";
         }
@@ -107,6 +110,10 @@ internal class PaySummary {
 
     public double RoundUpToCent(double original) {
         return Math.Ceiling(original * 100) / 100.0;
+    }
+
+    public double RoundToNearestCent(double original) {
+        return Math.Round(original * 100) / 100.0;
     }
 
     public enum PayFrequency {

@@ -25,7 +25,7 @@ internal class Program {
         }
 
         // Step 2: Register deductors and compute deductions.
-        Console.WriteLine("Calculating salary details...\n");
+        Console.WriteLine("\nCalculating salary details...\n");
         paySummary.RegisterDeductors(
             new List<IIncomeDeductor>() {
                 new MedicareLevyDeductor(),
@@ -37,14 +37,11 @@ internal class Program {
         // Step 3: Print out information.
         Console.WriteLine($"Gross package: {paySummary.RoundUpToCent(paySummary.gross):c}");
         Console.WriteLine($"Superannuation: {paySummary.super:c}\n");
-
+        Console.WriteLine($"Taxable income: {paySummary.gross-paySummary.super:c}\n");
         Console.WriteLine("Deductions:");
         Console.WriteLine(paySummary.GetDeductionsInfo()+"\n");
-
         Console.WriteLine($"Net income: {paySummary.NetIncome():c}");
         Console.WriteLine(paySummary.PaypacketMessage()+"\n");
-
-
         Console.WriteLine("Press any key to end...");
         Console.ReadKey();
     }
