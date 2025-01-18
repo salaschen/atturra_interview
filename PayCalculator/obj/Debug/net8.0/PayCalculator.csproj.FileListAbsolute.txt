@@ -1,0 +1,15 @@
+D:\Study\attura_interview\atturra_interview\PayCalculator\bin\Debug\net8.0\PayCalculator.exe
+D:\Study\attura_interview\atturra_interview\PayCalculator\bin\Debug\net8.0\PayCalculator.deps.json
+D:\Study\attura_interview\atturra_interview\PayCalculator\bin\Debug\net8.0\PayCalculator.runtimeconfig.json
+D:\Study\attura_interview\atturra_interview\PayCalculator\bin\Debug\net8.0\PayCalculator.dll
+D:\Study\attura_interview\atturra_interview\PayCalculator\bin\Debug\net8.0\PayCalculator.pdb
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\PayCalculator.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\PayCalculator.AssemblyInfoInputs.cache
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\PayCalculator.AssemblyInfo.cs
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\PayCalculator.csproj.CoreCompileInputs.cache
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\PayCalculator.sourcelink.json
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\PayCalculator.dll
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\refint\PayCalculator.dll
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\PayCalculator.pdb
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\PayCalculator.genruntimeconfig.cache
+D:\Study\attura_interview\atturra_interview\PayCalculator\obj\Debug\net8.0\ref\PayCalculator.dll
