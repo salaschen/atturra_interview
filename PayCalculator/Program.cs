@@ -3,10 +3,9 @@
 internal class Program {
 
     private static void Main(string[] args) {
+        // Step 1: Read User Input
         Console.Write("Enter your salary package amount: ");
         string input = Console.ReadLine()?? "";
-
-        // Step 1: Read User Input
         while (ProcessUserInput.Process(input) == false) {
             Console.WriteLine("Please input a valid number and try again.\n");
             Console.Write("Enter your salary package amount: ");
@@ -16,6 +15,7 @@ internal class Program {
         var paySummary = new PaySummary();
         paySummary.SetGrossPay(ProcessUserInput.amount);
 
+        // Get frequency input
         Console.Write("Enter your pay frequency (W for weekly, F for fortnightly, M for monthly): ");
         input = Console.ReadLine()?? " ";
         while (input.Length != 1 || paySummary.SetFrequency(input[0]) == false) {
@@ -24,39 +24,28 @@ internal class Program {
             input = Console.ReadLine()?? " ";
         }
 
-        // Step 2: Register deductors
+        // Step 2: Register deductors and compute deductions.
+        Console.WriteLine("Calculating salary details...\n");
         paySummary.RegisterDeductors(
             new List<IIncomeDeductor>() {
+                new MedicareLevyDeductor(),
+                new BudgetRepairLevyDeductor(),
                 new IncomeTaxDeductor()
             }
         );
 
-        // Step 3: 
-        Console.WriteLine(paySummary.GetDeductionsInfo());
+        // Step 3: Print out information.
+        Console.WriteLine($"Gross package: {paySummary.RoundUpToCent(paySummary.gross):c}");
+        Console.WriteLine($"Superannuation: {paySummary.super:c}\n");
 
-        // Debug print
-        Console.WriteLine($"total={paySummary.gross}, taxable={paySummary.taxableIncome}, super={paySummary.super}");
-        Console.WriteLine($"taxable (rounded) = {paySummary.taxableForDeductions}");
-        Console.WriteLine($"frequency={paySummary.frequency}");
+        Console.WriteLine("Deductions:");
+        Console.WriteLine(paySummary.GetDeductionsInfo()+"\n");
 
-        // Tests
-        // TestProcess(); // Debug
-    }
+        Console.WriteLine($"Net income: {paySummary.NetIncome():c}");
+        Console.WriteLine(paySummary.PaypacketMessage()+"\n");
 
 
-
-    // Test code.
-    private static void TestProcess() {
-        var inputList = new List<(string, bool)>() {
-            ("$100", true), ("$$25", false), 
-            ("$1.5", true), ("$1000,000,000", true),
-            ("$1.564", true), ("$1.567", true),
-            ("", false)
-        };
-
-        foreach (var input in inputList) {
-            var result = ProcessUserInput.Process(input.Item1);
-            Console.WriteLine($"result={result}, expect={input.Item2}, amount={ProcessUserInput.amount}");
-        }
+        Console.WriteLine("Press any key to end...");
+        Console.ReadKey();
     }
 }
