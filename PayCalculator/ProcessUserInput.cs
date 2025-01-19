@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PayCalculator;
 
-internal class ProcessUserInput {
+public class ProcessUserInput {
     // stores the converted user input.
     public static double amount = 0.0;
 
@@ -22,7 +22,7 @@ internal class ProcessUserInput {
         if (input.ToCharArray().Where(ch => ch == '$').Count() >= 2) {
             return false;
         }
-        input = input.TrimStart('$');
+        input = input.Trim().TrimStart('$');
         if (double.TryParse(input, out double result)) {
             amount = result;
             amount = double.Round(amount, 2);
